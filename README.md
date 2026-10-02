@@ -1,16 +1,16 @@
 # Human-Aware Teaching
 
-[English](README.md) · [简体中文](README.zh-CN.md)
-
 **Help AI understand the learner before it decides how to teach.**
 
 ![The same “I don't understand” can arise from missing prior knowledge, a missing inferential connection, processing overload, or understanding tied to a familiar example.](assets/hero.png)
+
+[English](README.md) · [简体中文](README.zh-CN.md)
 
 AI tutors already have explanations, examples, hints, questions, and practice available to them. The harder decision comes earlier: **why is this learner stuck, and what do they already understand?**
 
 Human-Aware Teaching is a general Agent Skill that adds an explicit reasoning layer for that decision, grounded in cognitive science and learning science. It uses what the learner says and can do to choose a useful response, then adjusts as new evidence arrives.
 
-[How it works](#the-reasoning-the-skill-adds) · [Install](#install) · [Read the skill](SKILL.md)
+[How it works](#how-the-skill-makes-that-decision) · [Install](#install) · [Read the skill](SKILL.md)
 
 ## One signal, different next moves
 
@@ -29,23 +29,11 @@ Consider a learner who follows a worked solution and gets stuck when the problem
 
 The distinction has a learning consequence. Retrieval is an active process that can strengthen later use of knowledge; comparison across examples can support the formation of a transferable schema. An AI tutor needs to decide which process would help this learner now. [Karpicke & Blunt, 2011](https://learninglab.psych.purdue.edu/downloads/2011/2011_Karpicke_Blunt_Science.pdf), [Gick & Holyoak, 1983](https://reasoninglab.psych.ucla.edu/wp-content/uploads/sites/273/2021/04/Gick_Holyoak1983_SchemaInduction.pdf)
 
-## The reasoning the skill adds
+## How the skill makes that decision
 
-Human-Aware Teaching puts an explicit learner reasoning step between the message and the response:
+Human-Aware Teaching follows an adaptive loop: observe the learner, form a working understanding, choose a teaching move, and respond.
 
-```text
-Learner evidence
-       ↓
-Current understanding
-       ↓
-Cognitive bottleneck
-       ↓
-Teaching decision
-       ↓
-Response
-       ↓
-New learner evidence ↺
-```
+![Learner evidence → Working understanding → Teaching decision → Response, with new learner evidence feeding back into the loop.](assets/teaching-cycle.png)
 
 It starts with the learner's words, reasoning, performance, goal, and relevant conversation history. It forms a working view of what they can already use, locates the smallest gap that matters, and chooses a response to address it. The next learner response updates that view.
 
